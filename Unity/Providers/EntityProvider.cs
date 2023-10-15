@@ -1,3 +1,5 @@
+using Scellecs.Morpeh.Components;
+
 namespace Scellecs.Morpeh.Providers {
     using System.Runtime.CompilerServices;
     using JetBrains.Annotations;
@@ -58,6 +60,7 @@ namespace Scellecs.Morpeh.Providers {
                 if (map.TryGetValue(instanceId, out var item)) {
                     if (item.entity.IsNullOrDisposed()) {
                         this.cachedEntity = item.entity = World.Default.CreateEntity();
+                        this.cachedEntity.AddComponent<GameObjectComponent>().gameObject = gameObject;
                     }
                     else {
                         this.cachedEntity = item.entity;
@@ -69,6 +72,7 @@ namespace Scellecs.Morpeh.Providers {
                     this.cachedEntity = item.entity = World.Default.CreateEntity();
                     item.refCounter   = 1;
                     map.Add(instanceId, item, out _);
+                    this.cachedEntity.AddComponent<GameObjectComponent>().gameObject = gameObject;
                 }
             }
         }

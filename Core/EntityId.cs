@@ -19,13 +19,13 @@
         [ShowInInspector]
         private int Id => this.id;
 #endif
-        internal readonly int id;
+        public readonly int id;
 
 #if UNITY_EDITOR && ODIN_INSPECTOR
         [ShowInInspector]
         private int Gen => this.gen;
 #endif
-        internal readonly int gen;
+        public readonly int gen;
 
 
         public EntityId(int id, int gen) {
